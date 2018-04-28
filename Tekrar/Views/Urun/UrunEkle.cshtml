@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Ürün Ekle";
+}
+
+@using Tekrar.Models
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    Yeni Ürün Ekleme Sayfası
+                </div>
+                <div class="block-controls">
+                    <a href="/Urun/Index"><span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span></a>
+                    <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                </div>
+            </div>
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <form action="/Urun/UrunEkle" role="form" method="post">
+                        <!--input ve select lere verdiğimiz name değerleri Models altındaki Urunler sınıfından geliyor(değerle aynı olmak zorunda) bunları [HttpPost] için kullanıyoruz-->
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Ürün Adı</label>
+                            <input type="text" name="UrunAdi" class="form-control" id="exampleInputEmail1" placeholder="Ürün adı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Fiyat:</label>
+                            <input type="number" name="Fiyat" class="form-control" id="exampleInputPassword1" placeholder="Fiyat giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Stok</label>
+                            <input type="number" name="Stok" class="form-control" id="exampleInputEmail1" placeholder="Stok sayısı giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Kategori Adı</label>
+                            <select class="form-control" name="KategoriID">
+                                @foreach (Kategoriler ktg in ViewBag.Kategoriler)
+                                {
+                                    <option value="@ktg.KategoriID">@ktg.KategoriAdi</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Tedarikçi Adı</label>
+                            <select class="form-control" name="TedarikciID">
+                                @foreach (Tedarikciler ted in ViewBag.Tedarikciler)
+                                {
+                                    <option value="@ted.TedarikciID">@ted.SirketAdi</option>
+                                }
+                            </select>
+                        </div>
+                        <!--submit buton içerisinde bulunduğu formun action ında hangi adres belirtilmişse oraya post eder-->
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

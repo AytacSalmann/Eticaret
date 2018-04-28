@@ -1,0 +1,116 @@
+﻿@{
+    ViewBag.Title = "Anasayfa";
+}
+
+<div class="container-fluid">
+    <div id="body-container">
+        <div id="right-column">
+            <div class="right-column-content">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 col-md-offset-3">
+                        <div class="c-widget c-widget-quick-info c-widget-size-small highlight-color-blue" data-url="#">
+                            <div class="c-widget-icon">
+                                <span class="icon icon-dollar"></span>
+                            </div>
+                            <div class="c-wdiget-content-block">
+                                <div class="c-widget-content-heading">
+                                    @ViewBag.AktifKullanici
+                                </div>
+                                <div class="c-widget-content-sub">
+                                    Aktif Kullanıcı
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="c-widget c-widget-quick-info c-widget-size-small highlight-color-green" data-url="#">
+                            <div class="c-widget-icon">
+                                <span class="icon icon-list-circle"></span>
+                            </div>
+                            <div class="c-wdiget-content-block">
+                                <div class="c-widget-content-heading">
+                                    @ViewBag.ToplamZiyaretci
+                                </div>
+                                <div class="c-widget-content-sub">
+                                    Toplam Ziyaretci
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="block overview-block">
+                                    <div class="block-heading">
+                                        <div class="main-text h2">
+                                            Ürün Satışları
+                                        </div>
+                                        <div class="block-controls">
+                                            <span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
+                                        </div>
+                                    </div>
+                                    <div class="block-content-outer">
+                                        <div class="block-content-inner">
+                                            <div class="graph-range">
+                                                <form role="form" class="form-inline">
+                                                    <div class="form-group graph-controls">
+                                                        <label for="date-range-select" class="control-label">Date Range</label>
+                                                        <select class="date-range-select form-control input-sm" id="date-range-select">
+                                                            <option value="today">Today</option>
+                                                            <option value="yesterday">Yesterday</option>
+                                                            <option value="this_week">This Week</option>
+                                                            <option value="last_week">Last Week</option>
+                                                            <option value="this_month">This Month</option>
+                                                            <option value="this_year" selected="selected">This Year</option>
+                                                            <option value="last_year">Last Year</option>
+                                                            <option value="custom">Custom</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group graph-controls">
+                                                        <div class="date-picker-connected">
+                                                            <div class="input-group input-group-sm date-picker-start">
+                                                                <input type="text" class="form-control" autocomplete="off" size="10" placeholder="DD/MM/YYYY" data-date-format="DD/MM/YYYY">
+                                                                <span class="input-group-addon input-group-icon">
+                                                                    <span class="glyphicon-calendar glyphicon"></span>
+                                                                </span>
+                                                            </div>
+                                                            to
+                                                            <div class="input-group input-group-sm date-picker-end">
+                                                                <input type="text" class="form-control" autocomplete="off" size="10" placeholder="DD/MM/YYYY" data-date-format="DD/MM/YYYY">
+                                                                <span class="input-group-addon input-group-icon">
+                                                                    <span class="glyphicon-calendar glyphicon"></span>
+                                                                </span>
+                                                            </div>
+                                                            <a class="btn btn-info btn-sm">
+                                                                <span class="glyphicon glyphicon-refresh"></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group graph-controls">
+                                                        <label for="overview-order-status" class="control-label">Order Status</label>
+                                                        <select class="form-control input-sm" id="overview-order-status">
+                                                            <option value="all">All</option>
+                                                            <option value="canceled">Canceled</option>
+                                                            <option value="complete">Complete</option>
+                                                            <option value="denied">Denied</option>
+                                                            <option value="pending">Pending</option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div id="overview" class="graph graph-size-normal" data-graph-colors="#5CB85C,#418AF1" style="padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 761px; height: 230px;" width="761" height="230"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 21px; text-align: center;">Jan</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 86px; text-align: center;">Feb</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 151px; text-align: center;">Mar</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 217px; text-align: center;">Apr</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 281px; text-align: center;">May</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 347px; text-align: center;">Jun</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 414px; text-align: center;">Jul</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 477px; text-align: center;">Aug</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 540px; text-align: center;">Sept</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 608px; text-align: center;">Oct</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 672px; text-align: center;">Nov</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 63px; top: 212px; left: 738px; text-align: center;">Dec</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 199px; left: 19px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 166px; left: 1px; text-align: right;">1000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 134px; left: 1px; text-align: right;">2000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 102px; left: 1px; text-align: right;">3000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 70px; left: 1px; text-align: right;">4000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 38px; left: 1px; text-align: right;">5000</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 6px; left: 1px; text-align: right;">6000</div></div></div><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 761px; height: 230px;" width="761" height="230"></canvas><div class="legend"><div style="position: absolute; width: 103px; height: 38px; top: 19px; left: 35px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:19px;left:35px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(92,184,92);overflow:hidden"></div></div></td><td class="legendLabel">Total Orders</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #ccc;padding:1px"><div style="width:4px;height:0;border:5px solid rgb(65,138,241);overflow:hidden"></div></div></td><td class="legendLabel">Total Customer</td></tr></tbody></table></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

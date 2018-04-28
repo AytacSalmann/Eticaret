@@ -1,0 +1,49 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="en">
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" />
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+
+            $('#dragThis').resizable({
+                stop: function (event, ui) {
+                    var w = $(this).width();
+                    var h = $(this).height();
+                    console.log('StopEvent fired')
+                    console.log('Width:' + w);
+                    console.log('Height:' + h)
+                }
+            });
+            
+        });
+
+    </script>
+    <style type="text/css">
+        #dragThis {
+            width: 6em;
+            height: 6em;
+            padding: 0.5em;
+            border: 3px solid #ccc;
+            border-radius: 0 1em 1em 1em;
+            background-color: #fff;
+            background-color: rgba(255,255,255,0.5);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="dragThis">
+        <ul>
+            <li id="posX"></li>
+            <li id="posY"></li>
+            <li id="finalX"></li>
+            <li id="finalY"></li>
+        </ul>
+    </div>
+</body>
+</html>

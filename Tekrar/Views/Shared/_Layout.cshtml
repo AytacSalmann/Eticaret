@@ -1,0 +1,211 @@
+﻿@{
+    Layout = null;
+}
+
+@using Tekrar.App_Classes
+@using Tekrar.Models
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/Content/assets/images/required/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Content/assets/images/required/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/assets/images/required/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/assets/images/required/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/Content/assets/images/required/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/Content/assets/images/required/ico/favicon.png">
+    <title>@ViewBag.Title</title>
+    <link type="text/css" href="/Content/assets/css/required/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <link type="text/css" href="/Content/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.theme.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/css/required/mCustomScrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/css/required/icheck/all.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/fonts/metrize-icons/styles-metrize-icons.css" rel="stylesheet">
+    <link type="text/css" href="/Content/assets/css/optional/jqvmap/jqvmap.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/css/optional/jqvmap/circloid-jqvmap.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/css/optional/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/css/optional/fullcalendar/circloid-fullcalendar.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/css/optional/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print" />
+    <link type="text/css" href="/Content/assets/css/styles-core.css" rel="stylesheet" />
+    <link type="text/css" href="/Content/assets/css/styles-core-responsive.css" rel="stylesheet" />
+  
+    <script src="/Content/assets/js/required/misc/ie10-viewport-bug-workaround.js"></script>
+    @RenderSection("head", false)
+</head>
+<body>
+    @RenderSection("body", false);  <!--modal ı burada acacaz-->
+    <div class="container-fluid">
+        <div id="header-container">
+            <div class="header-bar navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <div class="header-info">
+                            <div class="header-profile">
+                                <ul class="header-profile-menu">
+                                    <li>
+                                        <a href="#" class="top">
+                                            <span class="header-profile-menu-icon">
+                                            </span>
+                                            <span class="main-menu-text">
+                                                Hoşgeldin  @System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(User.Identity.Name)
+                                                <i class="icon icon-arrow-down-bold-round icon-size-small"></i>
+                                            </span>
+                                        </a>
+                                        <ul>
+                                            <li>
+                                                <a href="/Uye/CikisYap">
+                                                    <span class="main-text">Çıkış Yap</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header-profile">
+                                <ul class="header-profile-menu">
+                                    <li>
+                                        <a href="#" class="top">
+                                            <span class="header-profile-menu-icon">
+                                            </span>
+                                            <span class="main-menu-text">
+                                                Sepetim @{
+                                                    int adet = 0;
+                                                    Sepet s = new Sepet();
+                                                    if (Session["AktifSepet"] != null)
+                                                    {
+                                                        s = (Sepet)Session["AktifSepet"];
+                                                        adet = s.Urunler.Count;
+                                                    }
+                                                }
+                                                (@adet)
+                                                <i class="icon icon-arrow-down-bold-round icon-size-small"></i>
+                                            </span>
+                                        </a>
+                                        <ul>
+                                            @if (s.Urunler.Count > 0)
+                                            {
+                                                foreach (Urunler urun in s.Urunler)
+                                                {
+                                                    <li>
+                                                        <a href="/Urun/UrunDetay?id=@urun.UrunID">
+                                                            <span aria-hidden="true" class="icon icon-arrow-curve-right"></span>
+                                                            <span class="main-text">@urun.UrunAdi</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                                <li>
+                                                    <a href="/Home/Sepetim">
+                                                        <span aria-hidden="true" class="icon icon-arrow-curve-right"></span>
+                                                        <span class="main-text">Sepete Git</span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="body-container">
+            <div id="right-column">
+                <div class="mainnav-horizontal-outer">
+                    <div id="mainnav-horizontal-inner" class="fixed">
+                        <div id="mainnav-horizontal">
+                            <ul class="mainnav-horizontal" id="kategori">
+                                <li class="menu-item-top selected">
+                                    <a href="/Home/Index" class="top">
+                                        <span class="main-menu-icon">
+                                            <span aria-hidden="true" class="icon icon-grid-big icon-size-medium"></span>
+                                        </span>
+                                        <span class="main-menu-text">Anasayfa</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item-top">
+                                    <a href="/Urun/Index" class="top">
+                                        <span class="main-menu-text">Ürünler</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item-top">
+                                    <a href="/Kategori/Index" class="top">
+                                        <span class="main-menu-text">Kategoriler</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item-top">
+                                    <a href="/Tedarikci/Index" class="top">
+                                        <span class="main-menu-text">Tedarekçiler</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item-top">
+                                    <a href="/Kullanici/Index" class="top">
+                                        <span class="main-menu-text">Kullanıcılar</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item-top">
+                                    <a href="/Rol/Index" class="top">
+                                        <span class="main-menu-text">Rol Yönetimi</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-column-content">
+                    @RenderBody()
+                </div>
+                <div id="footer-container">
+                    <div class="footer-content">
+                        &copy; <a href="#?ref=Base5Builder">Circloid</a> was made with <span style="color:#FF0000;">&#10084;</span> and supported by - <a href="http://base5builder.com/" target="_blank" style="font-weight:300;color:#ffffff;background:#1d1d1d;padding:0 3px;">Base<span style="color:#ffa733;font-weight:bold">5</span>Builder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/Content/assets/js/required/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/jquery.easing.1.3-min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/jquery.mCustomScrollbar.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/misc/jquery.mousewheel-3.0.6.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/misc/retina.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/icheck.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/misc/jquery.ui.touch-punch.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/required/circloid-functions.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/circloid-functions-optional.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/jqvmap/jquery.vmap.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/jqvmap/maps/jquery.vmap.world.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/jqvmap/data/jquery.vmap.sampledata.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.JUMlib.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.tooltip.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.stack.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.bubbles.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.time.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/flot/jquery.flot.orderBars.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/misc/moment.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/optional/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/script.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/demo-files/index.js"></script>
+
+    @RenderSection("scripts", false)    <!--jquery kodları bu alana yazılacak-->
+
+</body>
+</html>
